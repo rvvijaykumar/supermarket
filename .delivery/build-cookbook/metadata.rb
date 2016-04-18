@@ -6,3 +6,5 @@ version '0.1.0'
 
 depends 'fancy_execute'
 depends 'languages'
+depends 'chef-sugar'
+depends 'docker', '~> 1.0'
