@@ -10,3 +10,9 @@ ruby_execute 'Rubocop Supermarket' do
   cwd node['components']['supermarket']['src']
   version node['components']['supermarket']['ruby_version']
 end
+
+ruby_execute 'check Supermarket for vulnerable gem versions' do
+  command 'bundle exec rake spec:bundle_audit'
+  cwd node['components']['supermarket']['src']
+  version node['components']['supermarket']['ruby_version']
+end
