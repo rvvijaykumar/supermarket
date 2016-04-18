@@ -6,14 +6,6 @@
 
 include_recipe 'build-cookbook::prepare'
 
-docker_service 'Start Docker for Test-Dependent Services' do
-  instance 'dockerd'
-  action [:create, :start]
-  host 'unix:///var/run/docker.sock'
-  group 'docker'
-  only_if { debian? or rhel? }
-end
-
 ruby_execute 'Run Supermarket Specs' do
   command 'bundle exec rake setup:docker db:test:prepare spec'
   cwd node['components']['supermarket']['src']
